@@ -1,0 +1,29 @@
+#root {
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  /* Comment and uncomment for modal display */
+  background-color: lightgrey;
+  opacity: 0.5;
+  filter: blur(3px);
+}
+
+#modal {
+  max-width: 80%;
+  height: auto;
+  overflow: scroll;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  opacity: 1 !important;
+  background-color: white;
+  text-align: center;
+  padding: 30px;
+  display: block;
+}
+
+label > input[type="radio"] {
+  display: none;
+}

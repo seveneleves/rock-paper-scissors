@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="relative">
+    <!-- Root [START] -->
+    <div id="root">
+      <!-- Title -->
+      <h1 class="text-4xl font-semibold mb-12 underline decoration-3">
+        Rock, Papers, Scissors
+      </h1>
+      <!-- Score -->
+      <div class="flex text-7xl mb-12">
+        <div class="flex-auto text-center">
+          <h2 class="text-slate-600 mb-4">AI</h2>
+          <h3 id="ai_score" class="font-bold text-slate-800">0</h3>
+        </div>
+        <div class="flex-auto text-center">
+          <h2 id="player_name" class="text-slate-600 mb-4">Player</h2>
+          <h3 id="player_score" class="font-bold text-slate-800">0</h3>
+        </div>
+      </div>
+      <!-- User choice [START] -->
+      <form class="flex justify-around">
+        <!-- Rock [START] -->
+        <label
+          class="text-2xl bg-slate-300 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
+          for="rock"
+        >
+          <input
+            type="radio"
+            id="rock"
+            name="user_choice"
+            value="Rock"
+            onclick="getValueFromRadio()"
+          />
+          <img class="w-8 mr-3" src="./img/rock.png" />
+          Rock
+        </label>
+        <!-- Rock [END] -->
+        <!-- Paper [START] -->
+        <label
+          class="text-2xl bg-slate-300 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
+          for="paper"
+        >
+          <input
+            type="radio"
+            id="paper"
+            name="user_choice"
+            value="Paper"
+            onclick="getValueFromRadio()"
+          />
+          <img class="w-8 mr-3" src="./img/paper.png" />
+          Paper
+        </label>
+        <!-- Paper [END] -->
+        <!-- Scissors [START] -->
+        <label
+          class="text-2xl bg-slate-300 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
+          for="scissors"
+        >
+          <input
+            type="radio"
+            id="scissors"
+            name="user_choice"
+            value="Scissors"
+            onclick="getValueFromRadio()"
+          />
+          <img class="w-8 mr-3" src="./img/scissors.png" />
+          Scissors
+        </label>
+        <!-- Scissors [END] -->
+      </form>
+      <!-- User choice [END] -->
+      <!-- Result -->
+      <h4 class="text-3xl text-center mt-12">You played <b><span id="player_choice"></span></b>. AI played <b><span id="ai_choice"></span></b>.</h4>
+      <br />
+      <h4 class="text-3xl text-center mt-2"><b><span id="winner"></span> wins.</b></h4>
+    </div>
+    <!-- Root [END] -->
+    <!-- Modal [START] -->
+    <form id="modal" class="text-2xl">
+      <span class="font-semibold">Player's name:</span><br />
+      <input
+        aria-label="Nom"
+        id="player_name_input"
+        type="text"
+        class="mt-2 border-2 border-slate-900 rounded-md px-2 py-1"
+      />
+      <br />
+      <div class="mt-4 font-semibold">Nb. of plays:</div>
+      <div class="flex justify-around mt-2">
+        <div>
+          <input checked type="radio" id="game3" name="nb_of_plays" value="3" />
+          <label for="game3">3</label><br />
+        </div>
+        <div>
+          <input type="radio" id="game5" name="nb_of_plays" value="5" />  
+          <label for="game5">5</label><br />
+        </div>
+        <div>
+          <input type="radio" id="game10" name="nb_of_plays" value="10" />  
+          <label for="game10">10</label><br />
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="mt-4 border-2 border-indigo-700 bg-indigo-200 px-2 py-1 rounded-md text-indigo-700 font-semibold"
+      >
+        Play!
+      </button>
+    </form>
+    <!-- Modal [END] -->
+  </body>
+  <script src="./js/index.js"></script>
+</html>
