@@ -16,21 +16,24 @@
         Rock, Papers, Scissors
       </h1>
       <!-- Score -->
-      <div class="flex text-7xl mb-12">
-        <div class="flex-auto text-center">
+      <div class="flex flex-col items-center md:flex-row text-7xl mb-12">
+        <div class="sm:w-1/2 text-center">
           <h2 class="text-slate-600 mb-4">Computer</h2>
           <h3 id="ai_score" class="font-bold text-slate-800">0</h3>
         </div>
-        <div class="flex-auto text-center">
+        <div class="mt-4 md:mt-0 sm:w-1/2 text-center">
           <h2 id="player_name" class="text-slate-600 mb-4">Player</h2>
           <h3 id="player_score" class="font-bold text-slate-800">0</h3>
         </div>
       </div>
       <!-- User choice [START] -->
-      <form id="choices" class="flex justify-around block">
+      <form
+        id="choices"
+        class="flex flex-col items-center sm:flex-row sm:justify-around block"
+      >
         <!-- Rock [START] -->
         <label
-          class="text-2xl bg-slate-300 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
+          class="text-2xl bg-slate-300 w-48 h-24 mb-4 sm:mb-0 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
           for="rock"
         >
           <input
@@ -46,7 +49,7 @@
         <!-- Rock [END] -->
         <!-- Paper [START] -->
         <label
-          class="text-2xl bg-slate-300 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
+          class="text-2xl bg-slate-300 w-48 h-24 mb-4 sm:mb-0 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
           for="paper"
         >
           <input
@@ -62,7 +65,7 @@
         <!-- Paper [END] -->
         <!-- Scissors [START] -->
         <label
-          class="text-2xl bg-slate-300 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
+          class="text-2xl bg-slate-300 w-48 h-24 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
           for="scissors"
         >
           <input
@@ -80,20 +83,27 @@
       <!-- User choice [END] -->
       <!-- Result -->
       <div id="result_section" class="text-3xl text-center hidden mt-12">
-        <h4>You played <b><span id="player_choice"></span></b>. Computer played <b><span id="ai_choice"></span></b>.</h4>
-        <h4 class="mt-6"><b><span id="winner"></span> wins the play.</b></h4>
+        <h4>
+          You played <b><span id="player_choice"></span></b>. Computer played
+          <b><span id="ai_choice"></span></b>.
+        </h4>
+        <h4 class="mt-6">
+          <b><span id="winner"></span> wins the play.</b>
+        </h4>
       </div>
-      <h4 id="game_winner" class="text-3xl text-center hidden mt-12 "><b><span id="game_winner_name"></span> wins the game!</b></h4>
+      <h4 id="game_winner" class="text-3xl text-center hidden mt-12">
+        <b><span id="game_winner_name"></span> wins the game!</b>
+      </h4>
     </div>
     <!-- Root [END] -->
     <!-- Modal [START] -->
-    <form id="modal" class="text-2xl">
+    <form id="modal" class="text-2xl absolute block h-auto p-10 text-center bg-white border-2 border-black">
       <span class="font-semibold">Player's name:</span><br />
       <input
         aria-label="Nom"
         id="player_name_input"
         type="text"
-        class="mt-2 border-2 border-slate-900 rounded-md px-2 py-1"
+        class="mt-2 w-fit border-2 border-slate-900 rounded-md px-2 py-1"
       />
       <br />
       <div class="mt-4 font-semibold">First to get to:</div>
@@ -103,16 +113,16 @@
           <label for="game3">3</label><br />
         </div>
         <div>
-          <input checked type="radio" id="game5" name="nb_of_plays" value="5" />  
-          <label for="game5">5</label><br />
+          <input checked type="radio" id="game5" name="nb_of_plays" value="5" />
+            <label for="game5">5</label><br />
         </div>
         <div>
-          <input type="radio" id="game10" name="nb_of_plays" value="10" />  
-          <label for="game10">11</label><br />
+          <input type="radio" id="game11" name="nb_of_plays" value="11" />  
+          <label for="game11">11</label><br />
         </div>
         <div>
-          <input type="radio" id="game15" name="nb_of_plays" value="15" />  
-          <label for="game15">17</label><br />
+          <input type="radio" id="game17" name="nb_of_plays" value="17" />  
+          <label for="game17">17</label><br />
         </div>
       </div>
       <button
