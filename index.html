@@ -18,7 +18,7 @@
       <!-- Score -->
       <div class="flex text-7xl mb-12">
         <div class="flex-auto text-center">
-          <h2 class="text-slate-600 mb-4">AI</h2>
+          <h2 class="text-slate-600 mb-4">Computer</h2>
           <h3 id="ai_score" class="font-bold text-slate-800">0</h3>
         </div>
         <div class="flex-auto text-center">
@@ -27,7 +27,7 @@
         </div>
       </div>
       <!-- User choice [START] -->
-      <form class="flex justify-around">
+      <form id="choices" class="flex justify-around block">
         <!-- Rock [START] -->
         <label
           class="text-2xl bg-slate-300 flex items-center p-4 rounded-md border-4 border-slate-500 font-semibold hover:bg-slate-400 transition duration-300 hover:cursor-pointer"
@@ -79,9 +79,11 @@
       </form>
       <!-- User choice [END] -->
       <!-- Result -->
-      <h4 class="text-3xl text-center mt-12">You played <b><span id="player_choice"></span></b>. AI played <b><span id="ai_choice"></span></b>.</h4>
-      <br />
-      <h4 class="text-3xl text-center mt-2"><b><span id="winner"></span> wins.</b></h4>
+      <div id="result_section" class="text-3xl text-center hidden mt-12">
+        <h4>You played <b><span id="player_choice"></span></b>. Computer played <b><span id="ai_choice"></span></b>.</h4>
+        <h4 class="mt-6"><b><span id="winner"></span> wins the play.</b></h4>
+      </div>
+      <h4 id="game_winner" class="text-3xl text-center hidden mt-12 "><b><span id="game_winner_name"></span> wins the game!</b></h4>
     </div>
     <!-- Root [END] -->
     <!-- Modal [START] -->
@@ -94,19 +96,23 @@
         class="mt-2 border-2 border-slate-900 rounded-md px-2 py-1"
       />
       <br />
-      <div class="mt-4 font-semibold">Nb. of plays:</div>
+      <div class="mt-4 font-semibold">First to get to:</div>
       <div class="flex justify-around mt-2">
         <div>
-          <input checked type="radio" id="game3" name="nb_of_plays" value="3" />
+          <input type="radio" id="game3" name="nb_of_plays" value="3" />  
           <label for="game3">3</label><br />
         </div>
         <div>
-          <input type="radio" id="game5" name="nb_of_plays" value="5" />  
+          <input checked type="radio" id="game5" name="nb_of_plays" value="5" />  
           <label for="game5">5</label><br />
         </div>
         <div>
           <input type="radio" id="game10" name="nb_of_plays" value="10" />  
-          <label for="game10">10</label><br />
+          <label for="game10">11</label><br />
+        </div>
+        <div>
+          <input type="radio" id="game15" name="nb_of_plays" value="15" />  
+          <label for="game15">17</label><br />
         </div>
       </div>
       <button

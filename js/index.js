@@ -1,12 +1,11 @@
 let player = "";
 let numberOfPlays = 0;
-let currentPlays = 0;
 let playerScore = 0;
-let aiScore = 0;
+let computerScore = 0;
 let aiChoiceArray = ["Rock", "Paper", "Scissors"];
 
 document.getElementById("modal").addEventListener("submit", function (e) {
-  // Prevent from page reloading
+  // Prevent page from reloading
   e.preventDefault();
 
   // Add player's name to page
@@ -21,7 +20,7 @@ document.getElementById("modal").addEventListener("submit", function (e) {
   document.getElementById("player_name").innerText = playerInput;
 
   // Initialize play count
-  numberOfPlays = document.querySelector('input[name="nb_of_plays"]:checked').value;
+  numberOfPlays = parseInt(document.querySelector('input[name="nb_of_plays"]:checked').value);
 
   // Change html & #root CSS properties
   const root = document.getElementById("root");
@@ -35,67 +34,54 @@ document.getElementById("modal").addEventListener("submit", function (e) {
 });
 
 const getValueFromRadio = () => {
-  // if (currentPlays === numberOfPlays) {
-  //   alert('This game has ended')
-  // }
-
-  const userChoice = document.querySelector(
-    'input[name="user_choice"]:checked'
-  ).value;
+  const userChoice = document.querySelector('input[name="user_choice"]:checked').value;
   const rand = Math.floor(Math.random() * 3);
   const aiChoice = aiChoiceArray[rand];
-  let winner = "";
+  let playWinner = "";
+  let finalWinner = "";
 
-  if (userChoice === "Rock") {
-    switch (aiChoice) {
-      case "Paper":
-        winner = "AI";
-        aiScore++;
-        break;
-      case "Scissors":
-        winner = player;
-        playerScore++;
-        break;
-      default:
-        winner = "Nobody";
-        break;
+  if (userChoice !== aiChoice) {
+    // Player loses
+    if (
+      (userChoice === "Rock" && aiChoice === "Paper") ||
+      (userChoice === "Paper" && aiChoice === "Scissors") ||
+      (userChoice === "Scissors" && aiChoice === "Rock")
+    ) {
+      playWinner = "Computer";
+      computerScore++;
+      // Player wins
+    } else {
+      playWinner = player;
+      playerScore++;
     }
-  } else if (userChoice === "Paper") {
-    switch (aiChoice) {
-      case "Rock":
-        winner = player;
-        playerScore++;
-        break;
-      case "Scissors":
-        winner = "AI";
-        aiScore++;
-        break;
-      default:
-        winner = "Nobody";
-        break;
-    }
+    // Computer and Player both play the same hand
   } else {
-    switch (aiChoice) {
-      case "Rock":
-        winner = "AI";
-        aiScore++;
-        break;
-      case "Paper":
-        winner = player;
-        playerScore++;
-        break;
-      default:
-        winner = "Nobody";
-        break;
-    }
+    playWinner = "Nobody";
   }
 
+  // Update score board
   document.getElementById("player_score").innerText = playerScore;
-  document.getElementById("ai_score").innerText = aiScore;
+  document.getElementById("ai_score").innerText = computerScore;
 
+  // Display result
   document.getElementById("player_choice").innerText = userChoice;
   document.getElementById("ai_choice").innerText = aiChoice;
-  document.getElementById("winner").innerText = winner;
+  document.getElementById("winner").innerText = playWinner;
 
-  currentPlays++;
+  // **TODO: add an if() condition instead of changing it at every iteration
+  document.getElementById("result_section").style.display = "block";
+
+  if (playerScore === numberOfPlays || computerScore === numberOfPlays) {
+    const gameWinner = document.getElementById("game_winner");
+    if (playerScore > computerScore) {
+      finalWinner = player;
+      gameWinner.classList.add("green");
+    } else {
+      finalWinner = "Computer";
+      gameWinner.classList.add("red");
+    }
+    gameWinner.style.display = "block";
+    document.getElementById("choices").style.display = "none";
+    document.getElementById("game_winner_name").innerText = finalWinner;
+  }
 };
